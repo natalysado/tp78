@@ -1,0 +1,45 @@
+CREATE DATABASE tp78
+  CHARACTER SET DEFAULT
+  COLLATE DEFAULT;
+  
+ CREATE TABLE store (
+  id        int NOT NULL PRIMARY KEY,
+  profile   int,
+  name      varchar(30),
+  lat       float,
+  lng       float,
+  id_rubro  int
+) ENGINE = InnoDB;
+
+INSERT INTO store (id, profile, name, lat, lng, id_rubro) VALUES
+  (1236940209, 0, 'atm', -37.998675, -57.552592, 0),
+  (2, 1, 'Banco Nacion', -37.9997, -57.5468, 1),
+  (3, 1, 'Banco Provincia', -37.9993, -57.5465, 2),
+  (4, 0, 'Astor', -38.0008, -57.5429, 2),
+  (5, 0, 'AGB', -37.9993, -57.5484, 3),
+  (8, 1, 'atm', -37.9987, -57.5526, 0),
+  (285071699, 0, 'Astor', -38.0008, -57.5429, 1),
+  (288366501, 1, 'Banco Nacion', -37.9997, -57.5468, 1),
+  (1236711896, 0, 'AGB', -37.9993, -57.5484, 3);
+
+SELECT * FROM `store` WHERE `store`.`id` < 100;
+SELECT * FROM `store` WHERE `store`.`id` > 2500;
+
+SELECT * FROM `store` WHERE `store`.`profile` < 1;
+SELECT * FROM `store` WHERE `store`.`profile` > 3;
+
+SELECT * FROM `store` WHERE `store`.`id` > 10000;
+
+SELECT * FROM `store` WHERE `store`.`id_rubro` < 1;
+SELECT * FROM `store` WHERE `store`.`id_rubro` > 2;
+ and
+  `store`.`name` LIKE '%Banco%';
+  
+SELECT MAX(`store`.`id`) AS LargestPrice FROM `store`;
+ 
+SELECT MIN(`store`.`lat`) AS SmallestPrice FROM `store`;
+
+
+UPDATE `store` SET `name` = "%Banco Nacion Argentina%" WHERE `name` = "%Banco Nacion%";
+UPDATE `store` SET `name` = "%Musical Norte%" WHERE `name` = "%AGB%";
+UPDATE `store` SET `lng` = "%-57.000001%" WHERE `lng` = "%astor%";
